@@ -150,11 +150,11 @@ namespace smarthome {
 
             previousTouchStatus = touchStatus
 
-            if (previousPresenceStatus === false & pins.digitalReadPin(DigitalPin.C9) === 0) {
-                control.raiseEvent(PRESENCE_DETECTED_ID)
+            if (previousPresenceStatus === false && pins.digitalReadPin(DigitalPin.C9) === 0) {
+                control.raiseEvent(PRESENCE_DETECTED_ID, true)
                 previousPresenceStatus = true
             }
-            if (previousPresenceStatus === true & pins.digitalReadPin(DigitalPin.C9) === 1) {
+            if (previousPresenceStatus === true && pins.digitalReadPin(DigitalPin.C9) === 1) {
                 previousPresenceStatus = false
             }
             
@@ -166,7 +166,7 @@ namespace smarthome {
     //% block="wenn Präsenz gemeldet"
     //% weight=65
     export function onPresenceDetected(handler: () => void) {
-        control.onEvent(PRESENCE_DETECTED_ID, () => {
+        control.onEvent(PRESENCE_DETECTED_ID, status, () => {
             handler()
         })
     }
