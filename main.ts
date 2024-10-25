@@ -178,11 +178,11 @@ namespace smarthome {
     * @param handler body code der beim Loslassen des Sensors ausgeführt werden soll
     */
 
-    //% blockId=mpr121_touch_on_touch_sensor_released
-    //% block="wenn Berührungssensor | %sensor | losgelassen"
-    //% sensor.fieldEditor="gridpicker" sensor.fieldOptions.columns=3
-    //% sensor.fieldOptions.tooltips="false"
-    //% weight=64
+    ///% blockId=mpr121_touch_on_touch_sensor_released
+    ///% block="wenn Berührungssensor | %sensor | losgelassen"
+    ///% sensor.fieldEditor="gridpicker" sensor.fieldOptions.columns=3
+    ///% sensor.fieldOptions.tooltips="false"
+    ///% weight=64
     export function onTouchSensorReleased(sensor: TouchSensor, handler: () => void) {
         initTouchController()
         control.onEvent(MPR121_TOUCH_SENSOR_RELEASED_ID, sensor, () => {
@@ -195,9 +195,9 @@ namespace smarthome {
     * @param handler body code to run when event is raised
     */
 
-    //% blockId=mpr121_touch_on_touched
-    //% block="wenn beliebiger Sensor berührt"
-    //% weight=60
+    ///% blockId=mpr121_touch_on_touched
+    ///% block="wenn beliebiger Sensor berührt"
+    ///% weight=60
     export function onAnyTouchSensorTouched(handler: () => void) {
         initTouchController()
         control.onEvent(MPR121_TOUCH_SENSOR_TOUCHED_ID, EventBusValue.MICROBIT_EVT_ANY, () => {
@@ -210,9 +210,9 @@ namespace smarthome {
     * @param handler body code to run when event is raised
     */
 
-    //% blockId=mpr121_touch_on_released
-    //% block="wenn beliebiger Sensor losgelassen"
-    //% weight=59
+    ///% blockId=mpr121_touch_on_released
+    ///% block="wenn beliebiger Sensor losgelassen"
+    ///% weight=59
     export function onAnyTouchSensorReleased(handler: () => void) {
         initTouchController()
         control.onEvent(MPR121_TOUCH_SENSOR_RELEASED_ID, EventBusValue.MICROBIT_EVT_ANY, () => {
@@ -231,9 +231,9 @@ namespace smarthome {
      * Dieser Block ist dafür gedacht innerhalb der touch event handler verwendet zu werden.
      */
 
-    //% blockId="mpr121_touch_current_touch_sensor
-    //% block="zuletzt berührter Sensor"
-    //% weight=50
+    ///% blockId="mpr121_touch_current_touch_sensor
+    ///% block="zuletzt berührter Sensor"
+    ///% weight=50
     export function touchSensor(): number {
         initTouchController()
         if (touchController.lastEventValue !== 0) {
@@ -259,10 +259,10 @@ namespace smarthome {
      * @param sensor the touch sensor to be checked, eg: TouchSensor.T0
      */
 
-    //% blockId="mpr121_touch_is_touch_sensor_touched" block="Berührungssensor | %sensor | wird berührt"
-    //% sensor.fieldEditor="gridpicker" sensor.fieldOptions.columns=3
-    //% sensor.fieldOptions.tooltips="false"
-    //% weight=40
+    ///% blockId="mpr121_touch_is_touch_sensor_touched" block="Berührungssensor | %sensor | wird berührt"
+    ///% sensor.fieldEditor="gridpicker" sensor.fieldOptions.columns=3
+    ///% sensor.fieldOptions.tooltips="false"
+    ///% weight=40
     export function isTouched(sensor: TouchSensor): boolean {
         initTouchController()
         return (touchController.lastTouchStatus & sensor) !== 0
