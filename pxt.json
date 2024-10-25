@@ -1,9 +1,10 @@
 {
-    "name": "smarthome",
+    "name": "pxt-smarthome",
     "description": "",
     "dependencies": {
         "core": "*",
-        "v3": "*"
+        "v3": "*",
+        "radio": "*"
     },
     "files": [
         "main.blocks",
