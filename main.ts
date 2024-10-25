@@ -162,6 +162,7 @@ namespace smarthome {
         }
     }
 
+    // Änderungen gemacht :(
     //% blockId=smarthome_presence_detected
     //% block="wenn Präsenz gemeldet"
     //% weight=65
