@@ -23,9 +23,8 @@ const enum TouchSensor {
 }
 
 //% weight=2 color=#AA278D icon="\uf015" block="Smarthome"
-
 namespace smarthome {
-
+    
     const MPR121_ADDRESS = 0x5A
     const TOUCH_STATUS_PAUSE_BETWEEN_READ = 50
 
@@ -38,6 +37,7 @@ namespace smarthome {
 
     const MPR121_TOUCH_SENSOR_TOUCHED_ID = 2148
     const MPR121_TOUCH_SENSOR_RELEASED_ID = 2149
+    const PRESENCE_DETECTED_ID = 2147
 
     /**
      * Initialize the touch controller.
@@ -123,7 +123,8 @@ namespace smarthome {
 
     function detectAndNotifyTouchEvents() {
         let previousTouchStatus = 0
-
+        let previousPresenceStatus = false
+        
         while (true) {
             const touchStatus = mpr121.readTouchStatus(MPR121_ADDRESS)
             touchController.lastTouchStatus = touchStatus
@@ -148,8 +149,26 @@ namespace smarthome {
             }
 
             previousTouchStatus = touchStatus
+
+            if (previousPresenceStatus === false & pins.digitalReadPin(DigitalPin.C9) === 0) {
+                control.raiseEvent(PRESENCE_DETECTED_ID)
+                previousPresenceStatus = true
+            }
+            if (previousPresenceStatus === true & pins.digitalReadPin(DigitalPin.C9) === 1) {
+                previousPresenceStatus = false
+            }
+            
             basic.pause(TOUCH_STATUS_PAUSE_BETWEEN_READ)
         }
+    }
+
+    //% blockId=smarthome_presence_detected
+    //% block="wenn Präsenz gemeldet"
+    //% weight=65
+    export function onPresenceDetected(handler: () => void) {
+        control.onEvent(PRESENCE_DETECTED_ID, () => {
+            handler()
+        })
     }
 
     /**
