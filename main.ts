@@ -178,11 +178,11 @@ namespace smarthome {
     * @param handler body code der beim Loslassen des Sensors ausgeführt werden soll
     */
 
-    ///% blockId=mpr121_touch_on_touch_sensor_released
-    ///% block="wenn Berührungssensor | %sensor | losgelassen"
-    ///% sensor.fieldEditor="gridpicker" sensor.fieldOptions.columns=3
-    ///% sensor.fieldOptions.tooltips="false"
-    ///% weight=64
+    //% blockId=mpr121_touch_on_touch_sensor_released
+    //% block="wenn Berührungssensor | %sensor | losgelassen"
+    //% sensor.fieldEditor="gridpicker" sensor.fieldOptions.columns=3
+    //% sensor.fieldOptions.tooltips="false"
+    //% weight=64
     export function onTouchSensorReleased(sensor: TouchSensor, handler: () => void) {
         initTouchController()
         control.onEvent(MPR121_TOUCH_SENSOR_RELEASED_ID, sensor, () => {
