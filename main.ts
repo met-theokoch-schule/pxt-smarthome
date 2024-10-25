@@ -195,9 +195,9 @@ namespace smarthome {
     * @param handler body code to run when event is raised
     */
 
-    ///% blockId=mpr121_touch_on_touched
-    ///% block="wenn beliebiger Sensor berührt"
-    ///% weight=60
+    // blockId=mpr121_touch_on_touched
+    // block="wenn beliebiger Sensor berührt"
+    // weight=60
     export function onAnyTouchSensorTouched(handler: () => void) {
         initTouchController()
         control.onEvent(MPR121_TOUCH_SENSOR_TOUCHED_ID, EventBusValue.MICROBIT_EVT_ANY, () => {
